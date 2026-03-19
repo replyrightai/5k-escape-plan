@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The $5K Escape Plan | Find Your Path to Digital Income</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0D0D0D;--ink2:#1A1A1A;--ink3:#242424;--ink4:#2E2E2E;
+  --smoke:#F7F4EF;--cream:#EDE8DF;--warm:#D4C9B8;--tan:#9E9080;--mist:#6B6258;
+  --green:#1B7A5A;--green2:#156147;--green-glow:rgba(27,122,90,0.15);--green-dim:rgba(27,122,90,0.1);
+  --gold:#C8A84A;--gold-dim:rgba(200,168,74,0.12);
+  --red:#C0392B;--red-dim:rgba(192,57,43,0.1);
+  --border:rgba(200,168,74,0.2);--border2:rgba(27,122,90,0.25);
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--smoke);font-family:'Inter',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
+
+/* ANIMATED BG GRID */
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(200,168,74,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,74,0.04) 1px,transparent 1px);background-size:60px 60px;animation:gridDrift 20s linear infinite}
+@keyframes gridDrift{from{background-position:0 0}to{background-position:60px 60px}}
+
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.orb1{width:400px;height:400px;background:radial-gradient(circle,rgba(27,122,90,0.12),transparent);top:-100px;right:-100px}
+.orb2{width:300px;height:300px;background:radial-gradient(circle,rgba(200,168,74,0.08),transparent);bottom:100px;left:-80px}
+
+#app{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 1.25rem 6rem}
+
+/* HEADER */
+.header{text-align:center;padding:3rem 1rem 2.5rem;margin-bottom:2rem}
+.brand-pill{display:inline-flex;align-items:center;gap:6px;background:var(--ink3);border:0.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:1.5rem}
+.brand-dot{width:5px;height:5px;background:var(--green);border-radius:50%}
+
+.eyebrow-tag{font-size:12px;letter-spacing:3px;color:var(--green);text-transform:uppercase;font-weight:600;margin-bottom:1rem;display:block}
+
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,3.8rem);font-weight:800;line-height:1.05;margin-bottom:1.25rem;letter-spacing:-0.5px}
+.header h1 .amt{color:var(--gold);position:relative;display:inline-block}
+.header h1 .amt::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.header h1 .break{display:block;font-style:italic;font-weight:700;color:var(--smoke);font-size:0.75em;margin-top:0.25rem}
+
+.subhead{font-size:15px;color:var(--warm);max-width:480px;margin:0 auto 1.75rem;line-height:1.85}
+.subhead strong{color:var(--smoke);font-weight:500}
+
+.urgency-bar{display:inline-flex;align-items:center;gap:8px;background:var(--red-dim);border:0.5px solid rgba(192,57,43,0.25);border-radius:6px;padding:7px 14px;font-size:12px;color:#E08080;margin-bottom:1.5rem}
+.pulse{width:7px;height:7px;background:#E05555;border-radius:50%;animation:pulse 1.5s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.6}}
+
+.trust-row{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.trust-item{font-size:11px;color:var(--mist);display:flex;align-items:center;gap:5px}
+.trust-check{color:var(--green);font-size:13px}
+
+/* PROGRESS */
+.progress-shell{background:var(--ink3);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:2rem}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prog-label{font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:500}
+.prog-xp{font-size:13px;color:var(--green);font-weight:500}
+.prog-track{background:var(--ink4);border-radius:4px;height:8px;overflow:hidden;margin-bottom:8px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--green2),var(--green),#2ECC8A);border-radius:4px;transition:width 0.7s cubic-bezier(.34,1.4,.64,1);position:relative}
+.prog-fill::after{content:'';position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:12px;height:12px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green-glow)}
+.steps-row{display:flex;gap:5px}
+.step-pip{flex:1;height:3px;background:var(--ink4);border-radius:2px;transition:background 0.3s}
+.step-pip.done{background:var(--green)}
+.step-pip.active{background:var(--gold)}
+
+/* XP FLASH */
+.xp-pop{position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);background:var(--green);color:white;font-size:18px;font-weight:600;padding:10px 24px;border-radius:30px;z-index:999;opacity:0;pointer-events:none;font-family:'Inter',sans-serif}
+.xp-pop.fire{animation:popAnim 0.8s ease forwards}
+@keyframes popAnim{0%{opacity:0;transform:translate(-50%,-60%) scale(0.7)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}70%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-40%) scale(0.9)}}
+
+/* QUESTION */
+.q-shell{animation:qIn 0.4s cubic-bezier(.34,1.2,.64,1) both}
+@keyframes qIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+.q-shell.rev{animation:qInRev 0.4s cubic-bezier(.34,1.2,.64,1) both}
+@keyframes qInRev{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+
+.q-num{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:0.6rem}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;line-height:1.2;margin-bottom:0.4rem;color:var(--smoke)}
+.q-text em{font-style:italic;color:var(--gold)}
+.q-hint{font-size:13px;color:var(--mist);margin-bottom:1rem;line-height:1.6}
+
+.stat-callout{background:var(--green-dim);border:0.5px solid var(--border2);border-radius:8px;padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:#7DD4B0;line-height:1.6;display:flex;gap:8px;align-items:flex-start}
+.stat-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.75rem}
+.opts.solo{grid-template-columns:1fr}
+
+.opt{background:var(--ink2);border:1px solid rgba(200,168,74,0.12);border-radius:12px;padding:1.1rem 1.15rem;cursor:pointer;transition:all 0.22s ease;text-align:left;position:relative;overflow:hidden}
+.opt:hover{border-color:rgba(200,168,74,0.35);background:var(--ink3);transform:translateY(-2px)}
+.opt.sel{border-color:var(--green);background:rgba(27,122,90,0.08)}
+.opt.sel::after{content:'✓';position:absolute;top:9px;right:11px;font-size:12px;color:var(--green);font-weight:600}
+.opt-em{font-size:22px;margin-bottom:7px;display:block;line-height:1}
+.opt-head{font-size:13px;font-weight:600;color:var(--smoke);display:block;margin-bottom:3px}
+.opt-body{font-size:11px;color:var(--mist);line-height:1.55}
+.opt.sel .opt-body{color:var(--tan)}
+
+/* NAV */
+.nav-row{display:flex;justify-content:space-between;align-items:center}
+.btn-prev{background:transparent;border:0.5px solid rgba(200,168,74,0.18);border-radius:8px;color:var(--mist);font-family:'Inter',sans-serif;font-size:13px;padding:0.65rem 1.2rem;cursor:pointer;transition:all 0.2s}
+.btn-prev:hover{border-color:var(--border);color:var(--warm)}
+.btn-fwd{background:var(--green);border:none;border-radius:8px;color:white;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:0.8rem 2.2rem;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px}
+.btn-fwd:hover:not(:disabled){background:var(--green2);transform:translateY(-1px);box-shadow:0 4px 20px var(--green-glow)}
+.btn-fwd:disabled{opacity:0.25;cursor:not-allowed}
+
+/* GATE */
+.gate{animation:qIn 0.4s ease both;text-align:center}
+.gate-lock{font-size:52px;margin-bottom:1rem;display:block}
+.gate h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,2.7rem);font-weight:800;margin-bottom:0.75rem;line-height:1.15}
+.gate h2 em{font-style:italic;color:var(--gold)}
+.gate-desc{font-size:14px;color:var(--warm);max-width:440px;margin:0 auto 1.5rem;line-height:1.85}
+.unlock-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:440px;margin:0 auto 2rem}
+.unlock-item{background:var(--ink3);border:0.5px solid var(--border);border-radius:8px;padding:0.75rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--warm)}
+.unlock-icon{font-size:16px;flex-shrink:0}
+.flds{display:flex;flex-direction:column;gap:10px;max-width:440px;margin:0 auto 1.25rem}
+.flds input{background:var(--ink2);border:0.5px solid rgba(200,168,74,0.18);border-radius:10px;color:var(--smoke);font-family:'Inter',sans-serif;font-size:14px;padding:0.9rem 1.1rem;width:100%;outline:none;transition:border-color 0.2s}
+.flds input:focus{border-color:var(--green)}
+.flds input::placeholder{color:var(--mist)}
+.btn-reveal{background:var(--green);border:none;border-radius:10px;color:white;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;padding:1rem 2rem;cursor:pointer;width:100%;max-width:440px;margin:0 auto;display:block;transition:all 0.2s;letter-spacing:0.3px}
+.btn-reveal:hover{background:var(--green2);box-shadow:0 4px 24px var(--green-glow);transform:translateY(-1px)}
+.priv{font-size:11px;color:var(--mist);margin-top:0.85rem}
+
+/* RESULTS */
+.results{animation:qIn 0.4s ease both}
+
+.escape-card{background:var(--ink2);border:1px solid rgba(27,122,90,0.3);border-radius:16px;padding:2.5rem 2rem;margin-bottom:1.5rem;text-align:center;position:relative;overflow:hidden}
+.escape-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% -20%,rgba(27,122,90,0.12),transparent 60%);pointer-events:none}
+.ec-tag{font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;font-weight:600;margin-bottom:0.75rem}
+.ec-name{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;margin-bottom:0.5rem;line-height:1.2}
+.ec-name span{color:var(--gold);display:block}
+.ec-score-wrap{margin:1.25rem auto;max-width:300px}
+.ec-track{background:var(--ink4);border-radius:6px;height:10px;overflow:hidden}
+.ec-bar{height:100%;background:linear-gradient(90deg,var(--green2),var(--green),#2ECC8A);border-radius:6px;transition:width 1.3s cubic-bezier(.34,1.4,.64,1)}
+.ec-score-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--mist);margin-top:5px}
+.ec-big{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:800;color:var(--green);line-height:1;margin:0.5rem 0}
+.ec-big sup{font-size:2rem;color:var(--mist)}
+.ec-xp{font-size:12px;color:var(--tan);margin-bottom:1.25rem}
+
+.ec-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.5rem}
+.ecm{background:var(--ink3);border:0.5px solid var(--border);border-radius:10px;padding:0.9rem 0.5rem;text-align:center}
+.ecm-val{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold)}
+.ecm-label{font-size:10px;color:var(--mist);margin-top:3px;line-height:1.4}
+
+.ec-desc{font-size:14px;color:var(--warm);line-height:1.85;max-width:500px;margin:0 auto}
+
+/* PATH CARDS */
+.path-eyebrow{font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;font-weight:600;margin:2rem 0 0.5rem}
+.path-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.25rem;line-height:1.3;color:var(--smoke)}
+
+.path-card{background:var(--ink2);border:0.5px solid rgba(200,168,74,0.15);border-radius:14px;padding:1.4rem;margin-bottom:12px;display:flex;gap:1.1rem;align-items:flex-start;transition:all 0.22s;position:relative;overflow:hidden}
+.path-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:2px 0 0 2px;background:var(--green);opacity:0;transition:opacity 0.2s}
+.path-card:hover{border-color:rgba(27,122,90,0.35);transform:translateX(4px)}
+.path-card:hover::before{opacity:1}
+.path-ico{width:46px;height:46px;border-radius:12px;background:var(--ink3);border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.path-body{flex:1}
+.path-tag{display:inline-block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:4px;margin-bottom:8px}
+.ptag-gold{background:var(--gold-dim);color:var(--gold)}
+.ptag-green{background:var(--green-dim);color:var(--green)}
+.path-head{font-size:15px;font-weight:600;color:var(--smoke);margin-bottom:5px}
+.path-why{font-size:12px;color:var(--mist);line-height:1.65;margin-bottom:12px}
+.path-cta{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:white;font-weight:600;text-decoration:none;background:var(--green);border-radius:7px;padding:8px 16px;transition:all 0.2s}
+.path-cta:hover{background:var(--green2);box-shadow:0 3px 14px var(--green-glow)}
+
+/* ESCAPE PLAN BOX */
+.escape-plan{margin-top:1.75rem;background:var(--ink2);border:1.5px solid rgba(27,122,90,0.35);border-radius:14px;padding:2rem;text-align:center;position:relative;overflow:hidden}
+.escape-plan::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(27,122,90,0.1),transparent 60%);pointer-events:none}
+.ep-tag{font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;font-weight:600;margin-bottom:0.5rem}
+.ep-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:800;margin-bottom:0.6rem;line-height:1.2}
+.ep-steps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1.25rem 0;text-align:left}
+.ep-step{background:var(--ink3);border:0.5px solid var(--border);border-radius:8px;padding:0.85rem;display:flex;gap:10px;align-items:flex-start}
+.ep-num{width:22px;height:22px;border-radius:50%;background:var(--green-dim);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--green);flex-shrink:0}
+.ep-text{font-size:12px;color:var(--warm);line-height:1.5}
+.ep-text strong{color:var(--smoke);font-weight:500;display:block}
+.ep-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;font-weight:700;padding:0.95rem 2.5rem;border-radius:10px;text-decoration:none;transition:all 0.2s;margin-top:0.5rem;letter-spacing:0.3px}
+.ep-cta:hover{box-shadow:0 6px 28px rgba(200,168,74,0.3);transform:translateY(-2px)}
+.ep-sub{font-size:12px;color:var(--mist);margin-top:0.85rem}
+
+.footer-msg{margin-top:1.25rem;padding:1.1rem;border:0.5px solid rgba(200,168,74,0.15);border-radius:10px;text-align:center;font-size:12px;color:var(--mist);line-height:1.75}
+.footer-msg strong{color:var(--warm);font-weight:500}
+
+@media(max-width:520px){
+  .opts{grid-template-columns:1fr}
+  .ec-metrics{grid-template-columns:1fr 1fr}
+  .ep-steps{grid-template-columns:1fr}
+  .unlock-items{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div id="xp-pop" class="xp-pop">+15 XP</div>
+
+<div id="app">
+  <div class="header">
+    <div class="brand-pill"><span class="brand-dot"></span>ReplyRight AI × Corporate2Digital</div>
+    <span class="eyebrow-tag">Free Income Readiness Assessment</span>
+    <h1>Find Your Path To Your<br><span class="amt">First $5K</span><span class="break">In Digital Income</span></h1>
+    <div class="urgency-bar"><span class="pulse"></span>Most people have no idea how close they already are</div>
+    <p class="subhead">Answer 6 questions. Get a <strong>personalized blueprint</strong> showing exactly how to escape paycheck dependence and earn your first $5K online — using skills you already have.</p>
+    <div class="trust-row">
+      <span class="trust-item"><span class="trust-check">✓</span>Takes 90 seconds</span>
+      <span class="trust-item"><span class="trust-check">✓</span>100% free</span>
+      <span class="trust-item"><span class="trust-check">✓</span>Step-by-step roadmap</span>
+      <span class="trust-item"><span class="trust-check">✓</span>No experience needed</span>
+    </div>
+  </div>
+  <div id="main"></div>
+</div>
+
+<script>
+const Qs=[
+  {
+    key:"trap",
+    num:"Question 1 of 6",
+    text:"Which paycheck trap hits <em>closest to home</em>?",
+    hint:"Pick the one that made you take this quiz.",
+    stat:"💡 87% of people who take this quiz have never told anyone how stuck they feel. You're not alone.",
+    opts:[
+      {e:"⏰",h:"I'm trading time I'll never get back",b:"Working 40–60 hrs a week for someone else's dream while mine sits on the shelf",v:"time"},
+      {e:"😰",h:"One bad month could wreck everything",b:"My income lives and dies with one employer — there's no backup plan",v:"fragile"},
+      {e:"📊",h:"I've outgrown my salary ceiling",b:"I have skills, results, and value — but my paycheck doesn't reflect any of it",v:"ceiling"},
+      {e:"🔥",h:"I want out but don't know how",b:"The idea of building something online excites me — I just don't know where to start",v:"lost"}
+    ]
+  },
+  {
+    key:"asset",
+    num:"Question 2 of 6",
+    text:"What's your biggest <em>unfair advantage</em>?",
+    hint:"This is what your digital income gets built on.",
+    stat:"🎯 You already have what most people spend years trying to acquire. Your experience is the product.",
+    opts:[
+      {e:"🧠",h:"My professional expertise",b:"I've spent years getting really good at something — accounting, marketing, ops, HR, finance",v:"expertise"},
+      {e:"🤝",h:"My network and relationships",b:"I know people. I make connections. People trust my recommendations",v:"network"},
+      {e:"✍️",h:"My ability to communicate",b:"I write, teach, explain, or present well — and people listen when I talk",v:"communication"},
+      {e:"🔧",h:"My problem-solving skills",b:"I figure things out fast. Businesses have problems I know how to solve",v:"problemsolving"}
+    ]
+  },
+  {
+    key:"blocker",
+    num:"Question 3 of 6",
+    text:"What's <em>actually stopped you</em> from earning online before?",
+    hint:"Be real — this is where your blueprint gets built.",
+    stat:"⚡ The #1 blocker isn't skill or money — it's not having a clear, proven path to follow.",
+    opts:[
+      {e:"🗺️",h:"I don't know what to do first",b:"Everyone says something different. I'm overwhelmed by the options and don't know where to start",v:"clarity"},
+      {e:"🕒",h:"I don't have time to figure it out",b:"Between work and life, I can't afford to spend months experimenting and learning from scratch",v:"time"},
+      {e:"💸",h:"I've tried things that didn't work",b:"I've invested in courses or ideas before and got nothing — I'm cautious now",v:"burned"},
+      {e:"🤐",h:"I haven't told anyone I want this",b:"This is private. I want to build something before I say anything to anyone",v:"private"}
+    ]
+  },
+  {
+    key:"time_avail",
+    num:"Question 4 of 6",
+    text:"How many hours a week could you <em>realistically</em> invest right now?",
+    hint:"Not the ideal number — the real number.",
+    stat:"📈 People earning $3K–$5K/month in digital income started with an average of just 7 hours per week.",
+    opts:[
+      {e:"🌅",h:"Under 5 hours",b:"I can carve out an hour here and there — mornings, lunch, weekends",v:"low"},
+      {e:"⚡",h:"5–10 hours",b:"I've got a solid chunk of time I can dedicate consistently each week",v:"mid"},
+      {e:"🔥",h:"10–20 hours",b:"I'm serious and I'm ready to put in real time — this is a priority for me",v:"high"},
+      {e:"🚀",h:"20+ hours",b:"I'm ready to go all in. Building this income is my primary mission right now",v:"allin"}
+    ]
+  },
+  {
+    key:"model",
+    num:"Question 5 of 6",
+    text:"Which digital income model <em>excites you most</em>?",
+    hint:"There's no wrong answer — this shapes your specific path.",
+    stat:"💰 All four of these have created $5K months for people starting from zero. Pick what fits your life.",
+    opts:[
+      {e:"🤝",h:"Recommend tools and get paid",b:"Share products and platforms I believe in and earn commissions when people buy",v:"affiliate"},
+      {e:"🎓",h:"Teach what I already know",b:"Turn my expertise into a course, coaching, or training people will pay for",v:"teaching"},
+      {e:"💼",h:"Offer services to businesses",b:"Use AI to deliver done-for-you services — content, automation, funnels, admin",v:"services"},
+      {e:"📱",h:"Build content that earns passively",b:"Create content that attracts an audience and converts to income on autopilot",v:"content"}
+    ]
+  },
+  {
+    key:"timeline",
+    num:"Question 6 of 6",
+    text:"When do you need your first $5K to <em>actually happen</em>?",
+    hint:"This is your finish line. Let's work backward from it.",
+    stat:"🏁 The people who set a real deadline are 4x more likely to hit their first $5K. Pick yours.",
+    full:true,
+    opts:[
+      {e:"⚡",h:"Yesterday — I needed this already",b:"I'm in a real financial pinch and I need income moving as fast as humanly possible",v:"asap"},
+      {e:"📅",h:"Within the next 30–60 days",b:"I have a little runway but I need this to work quickly — I'm motivated and ready",v:"soon"},
+      {e:"🎯",h:"Within 90 days",b:"I want to build something real and sustainable — not rushed but definitely not slow",v:"quarter"},
+      {e:"🌱",h:"I'm playing the long game",b:"I want to do this right. I'm committed to building real income over the next 6–12 months",v:"long"}
+    ]
+  }
+];
+
+let ans={},cur=0,captured=false,goBack=false,xpEarned=0;
+
+function profileData(){
+  const t=ans.time_avail||"mid";
+  const bl=ans.blocker||"clarity";
+  const tl=ans.timeline||"quarter";
+  const m=ans.model||"affiliate";
+  const a=ans.asset||"expertise";
+
+  let speed="90 days";
+  if(tl==="asap"||tl==="soon")speed="30–60 days";
+  else if(tl==="long")speed="6 months";
+
+  let readiness=50;
+  if(t==="high"||t==="allin")readiness+=20;
+  if(t==="low")readiness-=10;
+  if(bl==="burned")readiness-=8;
+  if(tl==="asap"||tl==="soon")readiness+=12;
+  if(a==="expertise"||a==="problemsolving")readiness+=10;
+  readiness=Math.min(Math.max(readiness,28),91);
+
+  return{readiness,speed};
+}
+
+function getArchetype(){
+  const m=ans.model||"affiliate";
+  const a=ans.asset||"expertise";
+  const trap=ans.trap||"lost";
+  if(m==="affiliate")return{name:"The Digital Connector",tagline:"Your path: recommend → earn → scale",desc:"You don't need to create a product. You need to connect the right people to the right tools — and get paid every time you do. Your network and communication skills make you a natural at this, and with the right affiliate partners in place, your first $5K comes from recommendations you're probably already making for free."};
+  if(m==="teaching")return{name:"The Knowledge Monetizer",tagline:"Your path: package expertise → teach → earn",desc:"You've spent years becoming excellent at something — and people will pay to shortcut that journey. Your first $5K comes from packaging what you already know into a format that earns: a course, coaching, a workshop, or a done-with-you program."};
+  if(m==="services")return{name:"The AI Service Provider",tagline:"Your path: offer services → automate → scale",desc:"Businesses are desperate for people who can implement AI. You don't need to be a developer — you need to know how to use the tools and position yourself as the person who does. Your first $5K comes from landing 2–3 clients and delivering real results with AI-powered workflows."};
+  return{name:"The Content Income Builder",tagline:"Your path: create content → build audience → monetize",desc:"You build once and earn repeatedly — that's the power of content. Your first $5K comes from creating content in a profitable niche that drives traffic to affiliate offers, digital products, or services. AI makes this faster and cheaper than ever before."};
+}
+
+function getPaths(){
+  const m=ans.model||"affiliate";
+  const bl=ans.blocker||"clarity";
+  const trap=ans.trap||"lost";
+  const paths=[];
+
+  const c2d={
+    ico:"🎯",tag:"ptag-gold",tagLabel:"Your $5K Starting Point",
+    head:"Corporate2Digital — Start at $5K, Scale to $10K",
+    why:"",
+    cta:"Start My $5K Journey",
+    url:"https://www.corporate2digital.com"
+  };
+
+  const skool={
+    ico:"⚡",tag:"ptag-green",tagLabel:"Tools + Training + Community",
+    head:"Setter Lun University — AI Income System",
+    why:"",
+    cta:"Join the community",
+    url:"https://www.skool.com/setterlun-university/about?ref=58771782c9ea4e909c1b7570974df6ec"
+  };
+
+  if(m==="affiliate"||m==="content"){
+    c2d.why="Your $5K is the first milestone — and most people hit it within the first half of this program. The blueprint is called the 10K Blueprint because that's where the system takes you once your foundation is built. You start at $5K. You don't stop there.";
+    skool.why="Setter Lun University gives you the live training, AI tools, and peer community to implement the blueprint faster. You'll learn exactly how to use GoHighLevel and AI automation to build an income pipeline that runs even when you're not working.";
+  } else if(m==="teaching"){
+    c2d.why="Your first $5K comes from packaging what you already know. The blueprint walks you through exactly how — and it doesn't stop there. Once your knowledge product is earning, the same system scales it to $10K and beyond without starting over.";
+    skool.why="This is where you learn to use AI to create your course content, marketing, and client delivery system in a fraction of the time. The community is full of people building the same thing — you won't figure this out alone.";
+  } else {
+    c2d.why="Two or three AI service clients gets you to $5K fast. The blueprint shows you exactly how to land them, what to charge, and how to deliver results. That's your $5K foundation — then the system shows you how to scale it to $10K without trading more hours.";
+    skool.why="GHL and AI automation are the engine behind every successful AI service provider. Setter Lun University trains you on both — and connects you with a community of people already landing clients and closing deals.";
+  }
+
+  if(bl==="burned"||bl==="clarity"){
+    paths.push(c2d,skool);
+  } else {
+    paths.push(skool,c2d);
+  }
+  return paths;
+}
+
+function getEscapePlan(){
+  const tl=ans.timeline||"quarter";
+  const m=ans.model||"affiliate";
+  let steps=[];
+  if(tl==="asap"||tl==="soon"){
+    steps=[
+      {n:1,strong:"This week",text:"Get the Corporate2Digital blueprint and identify your income model"},
+      {n:2,strong:"Week 2",text:"Set up your affiliate links and GHL account through Setter Lun University"},
+      {n:3,strong:"Week 3–4",text:"Launch your first offer to your existing network — no audience needed yet"},
+      {n:4,strong:"Day 30–60",text:"Your first commission or client payment lands. Reinvest and scale."}
+    ];
+  } else if(tl==="quarter"){
+    steps=[
+      {n:1,strong:"Month 1",text:"Foundation — blueprint, tools, and your first content or offer live"},
+      {n:2,strong:"Month 2",text:"Traction — first income, refining your message, building your list"},
+      {n:3,strong:"Month 3",text:"Scale — double down on what's working, automate with AI"},
+      {n:4,strong:"Day 90",text:"Your first $5K month is in reach. Most people hit it sooner."}
+    ];
+  } else {
+    steps=[
+      {n:1,strong:"Month 1–2",text:"Build the foundation — skills, tools, and a clear income model"},
+      {n:2,strong:"Month 3–4",text:"First income — affiliate commissions, first client, or first sale"},
+      {n:3,strong:"Month 5–6",text:"Consistency — $1K–$3K months, AI doing more of the work"},
+      {n:4,strong:"Month 6+",text:"Your $5K month arrives. The system runs with or without you."}
+    ];
+  }
+  return steps;
+}
+
+function flashXP(pts){
+  xpEarned+=pts;
+  const el=document.getElementById('xp-pop');
+  el.textContent='+'+pts+' XP';
+  el.classList.remove('fire');
+  void el.offsetWidth;
+  el.classList.add('fire');
+}
+
+function render(){
+  const el=document.getElementById("main");
+  if(cur<Qs.length){
+    const q=Qs[cur];
+    const sel=ans[q.key];
+    const pct=Math.round((cur/Qs.length)*100);
+    const pipsHTML=Qs.map((_,i)=>`<div class="step-pip ${i<cur?'done':i===cur?'active':''}"></div>`).join('');
+    el.innerHTML=`
+      <div class="progress-shell">
+        <div class="prog-top">
+          <span class="prog-label">${q.num}</span>
+          <span class="prog-xp">${xpEarned} XP</span>
+        </div>
+        <div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>
+        <div class="steps-row">${pipsHTML}</div>
+      </div>
+      <div class="q-shell${goBack?' rev':''}">
+        <div class="q-num">${q.num}</div>
+        <div class="q-text">${q.text}</div>
+        <div class="q-hint">${q.hint}</div>
+        <div class="stat-callout"><span class="stat-icon">💡</span><span>${q.stat.replace(/^../,'')}</span></div>
+        <div class="opts${q.full?' solo':''}">
+          ${q.opts.map((o,i)=>`
+            <button class="opt${sel===o.v?' sel':''}" onclick="pick('${q.key}',${i})">
+              <span class="opt-em">${o.e}</span>
+              <span class="opt-head">${o.h}</span>
+              <span class="opt-body">${o.b}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="nav-row">
+          ${cur>0?`<button class="btn-prev" onclick="prevQ()">← Back</button>`:`<span></span>`}
+          <button class="btn-fwd" onclick="nextQ()" ${sel===undefined?'disabled':''}>
+            ${cur===Qs.length-1?'Get My $5K Blueprint →':'Next Question →'}
+          </button>
+        </div>
+      </div>`;
+  } else if(!captured){
+    renderGate();
+  } else {
+    renderResults();
+  }
+  goBack=false;
+}
+
+function pick(k,idx){
+  const wasNew=ans[k]===undefined;
+  ans[k]=Qs[cur].opts[idx].v;
+  if(wasNew)flashXP(15);
+  render();
+}
+
+function nextQ(){
+  if(ans[Qs[cur].key]!==undefined){cur++;render();window.scrollTo({top:0,behavior:'smooth'});}
+}
+function prevQ(){if(cur>0){goBack=true;cur--;render();}}
+
+function renderGate(){
+  document.getElementById("main").innerHTML=`
+    <div class="gate">
+      <span class="gate-lock">🔓</span>
+      <h2>Your <em>$5K Blueprint</em><br>Is Ready.</h2>
+      <p class="gate-desc">You've earned <strong>${xpEarned} XP</strong> and your personalized escape plan is waiting. Enter your details to unlock your income archetype, readiness score, and step-by-step path to your first $5K online.</p>
+      <div class="unlock-items">
+        <div class="unlock-item"><span class="unlock-icon">💰</span>Your $5K Income Archetype</div>
+        <div class="unlock-item"><span class="unlock-icon">📊</span>Your Readiness Score</div>
+        <div class="unlock-item"><span class="unlock-icon">🗺️</span>Your Step-by-Step Escape Plan</div>
+        <div class="unlock-item"><span class="unlock-icon">🛠️</span>Your Personalized Toolkit</div>
+      </div>
+      <div class="flds">
+        <input id="fn" type="text" placeholder="First name" autocomplete="given-name"/>
+        <input id="fe" type="email" placeholder="Best email address" autocomplete="email"/>
+        <input id="fb" type="text" placeholder="Current job title (optional — helps personalize your plan)"/>
+      </div>
+      <button class="btn-reveal" onclick="submitGate()">Unlock My Free $5K Blueprint →</button>
+      <p class="priv">No spam. Ever. Your results are 100% private. Powered by ReplyRight AI.</p>
+    </div>`;
+}
+
+function submitGate(){
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  if(!n){alert('Please enter your first name to continue.');return;}
+  if(!e||!e.includes('@')||!e.includes('.')){alert('Please enter a valid email address.');return;}
+  ans._name=n;ans._email=e;ans._job=document.getElementById('fb').value.trim();
+  captured=true;
+  fetch('YOUR_GHL_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,job:ans._job,archetype:getArchetype().name,xp:xpEarned,answers:ans})}).catch(()=>{});
+  renderResults();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function animCount(target,el,suffix){
+  let n=0;const step=target/55;
+  const t=setInterval(()=>{
+    n=Math.min(n+step,target);
+    el.textContent=Math.round(n)+(suffix||'');
+    if(n>=target)clearInterval(t);
+  },18);
+}
+
+function renderResults(){
+  const pd=profileData();
+  const arch=getArchetype();
+  const paths=getPaths();
+  const plan=getEscapePlan();
+  const name=ans._name?ans._name.split(' ')[0]:'Friend';
+
+  document.getElementById("main").innerHTML=`
+    <div class="results">
+      <div class="escape-card">
+        <div class="ec-tag">Your $5K Income Profile</div>
+        <div class="ec-name">
+          ${name}, you're
+          <span>${arch.name}</span>
+        </div>
+        <div class="ec-xp">${arch.tagline} · ${xpEarned} XP earned</div>
+        <div class="ec-big"><span id="rscore">0</span><sup>/100</sup></div>
+        <div class="ec-score-wrap">
+          <div class="ec-track"><div class="ec-bar" id="rbar" style="width:0%"></div></div>
+          <div class="ec-score-labels"><span>Getting ready</span><span>Building</span><span>Ready to earn</span></div>
+        </div>
+        <div class="ec-metrics">
+          <div class="ecm"><div class="ecm-val">${pd.speed}</div><div class="ecm-label">Estimated time to first $5K</div></div>
+          <div class="ecm"><div class="ecm-val" id="rread">0%</div><div class="ecm-label">Income readiness score</div></div>
+          <div class="ecm"><div class="ecm-val">${xpEarned} XP</div><div class="ecm-label">Assessment score</div></div>
+        </div>
+        <p class="ec-desc">${arch.desc}</p>
+      </div>
+
+      <div class="path-eyebrow">Your personalized toolkit</div>
+      <div class="path-title">The two resources that will get you to $5K fastest</div>
+      ${paths.map(p=>`
+        <div class="path-card">
+          <div class="path-ico">${p.ico}</div>
+          <div class="path-body">
+            <span class="path-tag ${p.tag}">${p.tagLabel}</span>
+            <div class="path-head">${p.head}</div>
+            <div class="path-why">${p.why}</div>
+            <a class="path-cta" href="${p.url}" target="_blank" rel="noopener">${p.cta} →</a>
+          </div>
+        </div>
+      `).join('')}
+
+      <div class="escape-plan">
+        <div class="ep-tag">Your $5K Escape Plan</div>
+        <div class="ep-title">Here's exactly what the next ${pd.speed} looks like</div>
+        <div class="ep-steps">
+          ${plan.map(s=>`
+            <div class="ep-step">
+              <div class="ep-num">${s.n}</div>
+              <div class="ep-text"><strong>${s.strong}</strong>${s.text}</div>
+            </div>
+          `).join('')}
+        </div>
+        <a class="ep-cta" href="https://www.corporate2digital.com" target="_blank" rel="noopener">Get My $5K Starting Point →</a>
+        <p class="ep-sub">The blueprint is called the 10K Blueprint — because $5K is where you start, not where you stop.</p>
+      </div>
+
+      <div class="footer-msg">
+        <strong>Check your inbox.</strong> Your full $5K Blueprint with your income archetype, personalized roadmap, and bonus resources is on its way — sent by ReplyRight AI.
+      </div>
+    </div>`;
+
+  setTimeout(()=>{
+    const sc=document.getElementById('rscore');
+    const bar=document.getElementById('rbar');
+    const rd=document.getElementById('rread');
+    if(sc)animCount(pd.readiness,sc,'');
+    if(rd)animCount(pd.readiness,rd,'%');
+    if(bar)setTimeout(()=>{bar.style.width=pd.readiness+'%'},100);
+  },300);
+}
+
+render();
+</script>
+</body>
+</html>
