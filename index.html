@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The $5K Escape Plan | Find Your Path to Digital Income</title>
+<title>Your First $5K: Monetize With AI | ReplyRight AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -103,6 +103,9 @@ body{background:var(--ink);color:var(--smoke);font-family:'Inter',sans-serif;fon
 .btn-fwd{background:var(--green);border:none;border-radius:8px;color:white;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:0.8rem 2.2rem;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px}
 .btn-fwd:hover:not(:disabled){background:var(--green2);transform:translateY(-1px);box-shadow:0 4px 20px var(--green-glow)}
 .btn-fwd:disabled{opacity:0.25;cursor:not-allowed}
+.btn-start{background:var(--green);border:none;border-radius:10px;color:white;font-family:'Inter',sans-serif;font-size:16px;font-weight:700;padding:1rem 2.8rem;cursor:pointer;letter-spacing:0.4px;display:inline-block;margin-top:1.75rem;position:relative;animation:btnPulse 2s ease-in-out infinite}
+@keyframes btnPulse{0%,100%{box-shadow:0 0 0 0 rgba(27,122,90,0.5),0 4px 20px var(--green-glow)}50%{box-shadow:0 0 0 12px rgba(27,122,90,0),0 4px 28px rgba(27,122,90,0.4)}}
+.btn-start:hover{background:var(--green2);transform:translateY(-2px)}
 
 /* GATE */
 .gate{animation:qIn 0.4s ease both;text-align:center}
@@ -196,16 +199,17 @@ body{background:var(--ink);color:var(--smoke);font-family:'Inter',sans-serif;fon
 <div id="app">
   <div class="header">
     <div class="brand-pill"><span class="brand-dot"></span>ReplyRight AI × Corporate2Digital</div>
-    <span class="eyebrow-tag">Free Income Readiness Assessment</span>
-    <h1>Find Your Path To Your<br><span class="amt">First $5K</span><span class="break">In Digital Income</span></h1>
-    <div class="urgency-bar"><span class="pulse"></span>Most people have no idea how close they already are</div>
-    <p class="subhead">Answer 6 questions. Get a <strong>personalized blueprint</strong> showing exactly how to escape paycheck dependence and earn your first $5K online — using skills you already have.</p>
+    <span class="eyebrow-tag">Free AI Income Readiness Assessment</span>
+    <h1>Your First <span class="amt">$5K</span><span class="break">Monetize With AI</span></h1>
+    <div class="urgency-bar"><span class="pulse"></span>AI is creating new income streams daily — most people don't know how to access them yet</div>
+    <p class="subhead">Answer 6 questions. Get a <strong>personalized AI income roadmap</strong> showing exactly which tools, strategies, and steps will get you to your first $5K online — using AI to do the heavy lifting.</p>
     <div class="trust-row">
       <span class="trust-item"><span class="trust-check">✓</span>Takes 90 seconds</span>
       <span class="trust-item"><span class="trust-check">✓</span>100% free</span>
-      <span class="trust-item"><span class="trust-check">✓</span>Step-by-step roadmap</span>
+      <span class="trust-item"><span class="trust-check">✓</span>AI-powered income roadmap</span>
       <span class="trust-item"><span class="trust-check">✓</span>No experience needed</span>
     </div>
+    <button class="btn-start" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth',block:'start'})">Find My $5K AI Income Path →</button>
   </div>
   <div id="main"></div>
 </div>
@@ -215,14 +219,14 @@ const Qs=[
   {
     key:"trap",
     num:"Question 1 of 6",
-    text:"Which paycheck trap hits <em>closest to home</em>?",
-    hint:"Pick the one that made you take this quiz.",
-    stat:"💡 87% of people who take this quiz have never told anyone how stuck they feel. You're not alone.",
+    text:"What's <em>really</em> holding you back from earning with AI?",
+    hint:"Pick the one that resonates most — this shapes your entire AI income roadmap.",
+    stat:"💡 87% of people who want to monetize with AI already have everything they need to start — they just need the right roadmap.",
     opts:[
-      {e:"⏰",h:"I'm trading time I'll never get back",b:"Working 40–60 hrs a week for someone else's dream while mine sits on the shelf",v:"time"},
-      {e:"😰",h:"One bad month could wreck everything",b:"My income lives and dies with one employer — there's no backup plan",v:"fragile"},
-      {e:"📊",h:"I've outgrown my salary ceiling",b:"I have skills, results, and value — but my paycheck doesn't reflect any of it",v:"ceiling"},
-      {e:"🔥",h:"I want out but don't know how",b:"The idea of building something online excites me — I just don't know where to start",v:"lost"}
+      {e:"⏰",h:"I'm trading time I'll never get back",b:"Working for someone else's dream while AI is creating income opportunities I'm completely missing",v:"time"},
+      {e:"😰",h:"My income depends on one source",b:"One paycheck, no backup — AI could change that but I haven't made a move yet",v:"fragile"},
+      {e:"📊",h:"My skills are worth more than I'm earning",b:"I have real expertise — AI could help me package and monetize it but I don't know how",v:"ceiling"},
+      {e:"🔥",h:"I want to monetize with AI but don't know where to start",b:"The opportunity is obvious — I just need a clear proven path to my first dollar online",v:"lost"}
     ]
   },
   {
@@ -242,7 +246,7 @@ const Qs=[
     key:"blocker",
     num:"Question 3 of 6",
     text:"What's <em>actually stopped you</em> from earning online before?",
-    hint:"Be real — this is where your blueprint gets built.",
+    hint:"Be real — this is where your AI income roadmap gets built.",
     stat:"⚡ The #1 blocker isn't skill or money — it's not having a clear, proven path to follow.",
     opts:[
       {e:"🗺️",h:"I don't know what to do first",b:"Everyone says something different. I'm overwhelmed by the options and don't know where to start",v:"clarity"},
@@ -267,9 +271,9 @@ const Qs=[
   {
     key:"model",
     num:"Question 5 of 6",
-    text:"Which digital income model <em>excites you most</em>?",
+    text:"Which AI income model <em>fits your life best</em>?",
     hint:"There's no wrong answer — this shapes your specific path.",
-    stat:"💰 All four of these have created $5K months for people starting from zero. Pick what fits your life.",
+    stat:"💰 All four of these are AI-powered income models creating $5K months for people starting from zero right now.",
     opts:[
       {e:"🤝",h:"Recommend tools and get paid",b:"Share products and platforms I believe in and earn commissions when people buy",v:"affiliate"},
       {e:"🎓",h:"Teach what I already know",b:"Turn my expertise into a course, coaching, or training people will pay for",v:"teaching"},
@@ -374,14 +378,14 @@ function getEscapePlan(){
   let steps=[];
   if(tl==="asap"||tl==="soon"){
     steps=[
-      {n:1,strong:"This week",text:"Get the Corporate2Digital blueprint and identify your income model"},
+      {n:1,strong:"This week",text:"Get the blueprint and identify your AI income model"},
       {n:2,strong:"Week 2",text:"Set up your affiliate links and GHL account through Setter Lun University"},
       {n:3,strong:"Week 3–4",text:"Launch your first offer to your existing network — no audience needed yet"},
       {n:4,strong:"Day 30–60",text:"Your first commission or client payment lands. Reinvest and scale."}
     ];
   } else if(tl==="quarter"){
     steps=[
-      {n:1,strong:"Month 1",text:"Foundation — blueprint, tools, and your first content or offer live"},
+      {n:1,strong:"Month 1",text:"Foundation — AI tools set up and your first income offer live"},
       {n:2,strong:"Month 2",text:"Traction — first income, refining your message, building your list"},
       {n:3,strong:"Month 3",text:"Scale — double down on what's working, automate with AI"},
       {n:4,strong:"Day 90",text:"Your first $5K month is in reach. Most people hit it sooner."}
@@ -439,7 +443,7 @@ function render(){
         <div class="nav-row">
           ${cur>0?`<button class="btn-prev" onclick="prevQ()">← Back</button>`:`<span></span>`}
           <button class="btn-fwd" onclick="nextQ()" ${sel===undefined?'disabled':''}>
-            ${cur===Qs.length-1?'Get My $5K Blueprint →':'Next Question →'}
+            ${cur===Qs.length-1?'Get My AI Income Blueprint →':'Next Question →'}
           </button>
         </div>
       </div>`;
@@ -459,7 +463,7 @@ function pick(k,idx){
 }
 
 function nextQ(){
-  if(ans[Qs[cur].key]!==undefined){cur++;render();window.scrollTo({top:0,behavior:'smooth'});}
+  if(ans[Qs[cur].key]!==undefined){cur++;render();document.getElementById('app').scrollIntoView({behavior:'smooth',block:'start'});}
 }
 function prevQ(){if(cur>0){goBack=true;cur--;render();}}
 
@@ -467,12 +471,12 @@ function renderGate(){
   document.getElementById("main").innerHTML=`
     <div class="gate">
       <span class="gate-lock">🔓</span>
-      <h2>Your <em>$5K Blueprint</em><br>Is Ready.</h2>
-      <p class="gate-desc">You've earned <strong>${xpEarned} XP</strong> and your personalized escape plan is waiting. Enter your details to unlock your income archetype, readiness score, and step-by-step path to your first $5K online.</p>
+      <h2>Your <em>AI Income Blueprint</em><br>Is Ready.</h2>
+      <p class="gate-desc">You've earned <strong>${xpEarned} XP</strong> and your personalized AI income roadmap is waiting. Enter your details to unlock your AI income archetype, readiness score, and step-by-step path to your first $5K using AI.</p>
       <div class="unlock-items">
         <div class="unlock-item"><span class="unlock-icon">💰</span>Your $5K Income Archetype</div>
         <div class="unlock-item"><span class="unlock-icon">📊</span>Your Readiness Score</div>
-        <div class="unlock-item"><span class="unlock-icon">🗺️</span>Your Step-by-Step Escape Plan</div>
+        <div class="unlock-item"><span class="unlock-icon">🗺️</span>Your AI Income Roadmap</div>
         <div class="unlock-item"><span class="unlock-icon">🛠️</span>Your Personalized Toolkit</div>
       </div>
       <div class="flds">
@@ -480,7 +484,7 @@ function renderGate(){
         <input id="fe" type="email" placeholder="Best email address" autocomplete="email"/>
         <input id="fb" type="text" placeholder="Current job title (optional — helps personalize your plan)"/>
       </div>
-      <button class="btn-reveal" onclick="submitGate()">Unlock My Free $5K Blueprint →</button>
+      <button class="btn-reveal" onclick="submitGate()">Unlock My Free AI Income Blueprint →</button>
       <p class="priv">No spam. Ever. Your results are 100% private. Powered by ReplyRight AI.</p>
     </div>`;
 }
@@ -494,7 +498,7 @@ function submitGate(){
   captured=true;
   fetch('YOUR_GHL_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,job:ans._job,archetype:getArchetype().name,xp:xpEarned,answers:ans})}).catch(()=>{});
   renderResults();
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('app').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function animCount(target,el,suffix){
@@ -550,7 +554,7 @@ function renderResults(){
       `).join('')}
 
       <div class="escape-plan">
-        <div class="ep-tag">Your $5K Escape Plan</div>
+        <div class="ep-tag">Your AI-Powered $5K Roadmap</div>
         <div class="ep-title">Here's exactly what the next ${pd.speed} looks like</div>
         <div class="ep-steps">
           ${plan.map(s=>`
@@ -560,12 +564,12 @@ function renderResults(){
             </div>
           `).join('')}
         </div>
-        <a class="ep-cta" href="https://www.corporate2digital.com" target="_blank" rel="noopener">Get My $5K Starting Point →</a>
+        <a class="ep-cta" href="https://www.corporate2digital.com" target="_blank" rel="noopener">Start Monetizing With AI →</a>
         <p class="ep-sub">The blueprint is called the 10K Blueprint — because $5K is where you start, not where you stop.</p>
       </div>
 
       <div class="footer-msg">
-        <strong>Check your inbox.</strong> Your full $5K Blueprint with your income archetype, personalized roadmap, and bonus resources is on its way — sent by ReplyRight AI.
+        <strong>Check your inbox.</strong> Your full AI Income Blueprint with your personalized roadmap, tools, and bonus resources is on its way — sent by ReplyRight AI.
       </div>
     </div>`;
 
