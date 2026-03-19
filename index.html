@@ -209,7 +209,6 @@ body{background:var(--ink);color:var(--smoke);font-family:'Inter',sans-serif;fon
       <span class="trust-item"><span class="trust-check">✓</span>AI-powered income roadmap</span>
       <span class="trust-item"><span class="trust-check">✓</span>No experience needed</span>
     </div>
-    <button class="btn-start" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth',block:'start'})">Find My $5K AI Income Path →</button>
   </div>
   <div id="main"></div>
 </div>
@@ -463,7 +462,7 @@ function pick(k,idx){
 }
 
 function nextQ(){
-  if(ans[Qs[cur].key]!==undefined){cur++;render();document.getElementById('app').scrollIntoView({behavior:'smooth',block:'start'});}
+  if(ans[Qs[cur].key]!==undefined){cur++;render();document.getElementById('main').scrollIntoView({behavior:'smooth',block:'start'});}
 }
 function prevQ(){if(cur>0){goBack=true;cur--;render();}}
 
@@ -498,7 +497,7 @@ function submitGate(){
   captured=true;
   fetch('YOUR_GHL_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,job:ans._job,archetype:getArchetype().name,xp:xpEarned,answers:ans})}).catch(()=>{});
   renderResults();
-  document.getElementById('app').scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('main').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function animCount(target,el,suffix){
@@ -570,6 +569,10 @@ function renderResults(){
 
       <div class="footer-msg">
         <strong>Check your inbox.</strong> Your full AI Income Blueprint with your personalized roadmap, tools, and bonus resources is on its way — sent by ReplyRight AI.
+      </div>
+      <div style="text-align:center;margin-top:1.5rem">
+        <a class="btn-start" href="https://www.corporate2digital.com" target="_blank" rel="noopener">Find My $5K AI Income Path →</a>
+        <p style="font-size:11px;color:var(--mist);margin-top:0.85rem">You'll be taken to the Corporate2Digital 10K Blueprint — where your $5K starts.</p>
       </div>
     </div>`;
 
